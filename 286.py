@@ -62,13 +62,18 @@ def wallsAndGates1(rooms):
     m, n = len(rooms), len(rooms[0])
     # -1: wall  0: gate  INF: room
     levelQueue = deque((i, j)  for i in range(m) for j in range(n) if rooms[i][j] == 0)
-
+    INF = 2**31-1
     while levelQueue:
         sz = len(levelQueue)
+        steps = 0
         while sz:
             x, y = levelQueue.popleft()
             for nx, ny in ((x+1,y), (x-1,y),(x,y+1),(x,y-1)):
-                if 0<=nx<
+                if 0<=nx<m and 0<=ny<n and rooms[nx][ny]==INF:
+                    rooms[nx][ny] = steps
+                    
+
+
 
 
 
