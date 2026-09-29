@@ -36,8 +36,10 @@
 # ai != bi
 # All the pairs [ai, bi] are distinct.
 
+from collections import defaultdict, deque
+
 class Solution1:
-    def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
+    def findOrder(self, numCourses: int, prerequisites: list) -> list:
 
         preCourse = defaultdict(list)
         for a, b in prerequisites:
@@ -83,7 +85,7 @@ class Solution1:
 
 
 class Solution2:
-    def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
+    def findOrder(self, numCourses: int, prerequisites: list) -> list:
 
         preCourses = defaultdict(set)
         postCourses = defaultdict(set)
