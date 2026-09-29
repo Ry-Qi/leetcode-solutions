@@ -29,7 +29,7 @@ class Solution:
                 cur = cur.left
             top = st.pop()
             cur = top.right
-        
+
         return res
 
 root1 = TreeNode(1)
@@ -47,7 +47,7 @@ root3.left = root6
 
 #          1
 #      2        3
-#   4     5   6  
+#   4     5   6 
 
 
 print(Solution().preorderTraversal1(root1))

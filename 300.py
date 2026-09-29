@@ -2,7 +2,7 @@
 # No.300 Longest Increasing subsequence
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 
- 
+
 
 # Example 1:
 
@@ -41,5 +41,3 @@ class Solution:
 print(Solution1().lengthOfLIS([10,9,2,5,3,7,101,18]))
 
 
-                
-        

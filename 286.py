@@ -55,44 +55,45 @@ def wallsAndGates1(rooms):
     for p, s in Map.items():
         rooms[p[0]][p[1]] = s
 
-    print(rooms)
 
 
-def wallsAndGates1(rooms):
+def wallsAndGates2(rooms):
     m, n = len(rooms), len(rooms[0])
     # -1: wall  0: gate  INF: room
     levelQueue = deque((i, j)  for i in range(m) for j in range(n) if rooms[i][j] == 0)
     INF = 2**31-1
+    steps = 0
     while levelQueue:
         sz = len(levelQueue)
-        steps = 0
+        steps += 1
         while sz:
             x, y = levelQueue.popleft()
             for nx, ny in ((x+1,y), (x-1,y),(x,y+1),(x,y-1)):
                 if 0<=nx<m and 0<=ny<n and rooms[nx][ny]==INF:
                     rooms[nx][ny] = steps
-                    
+                    levelQueue.append((nx, ny))
+            sz -= 1
 
-
-
-
-
+def wallsAndGates2WithOptimized(rooms):
+    m, n = len(rooms), len(rooms[0])
+    # -1: wall  0: gate  INF: room
+    levelQueue = deque((i, j)  for i in range(m) for j in range(n) if rooms[i][j] == 0)
+    INF = 2**31-1
+    while levelQueue:
+        x, y = levelQueue.popleft()
+        for nx, ny in ((x+1,y), (x-1,y),(x,y+1),(x,y-1)):
+            if 0<=nx<m and 0<=ny<n and rooms[nx][ny]==INF:
+                rooms[nx][ny] = rooms[x][y] + 1
+                levelQueue.append((nx, ny))
 
 
 rooms = [[2147483647,-1,0,2147483647],[2147483647,2147483647,2147483647,-1],[2147483647,-1,2147483647,-1],[0,-1,2147483647,2147483647]]
 
+wallsAndGates2(rooms)
+
+print(rooms)
 
 
-
-
-
-
-
-
-
-wallsAndGates1(rooms)
-
-print(pairs)
 
 
 

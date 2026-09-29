@@ -24,24 +24,23 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
-        
+
         carry = 0
         dummy = tail = ListNode()
         c1, c2 = l1, l2
         while c1 or c2 or carry!=0:
             n1 = n2 = 0
-            if c1: 
+            if c1:
                 n1 = c1.val
                 c1=c1.next
-            if c2: 
+            if c2:
                 n2 = c2.val
                 c2=c2.next
             cur = (n1+n2+carry)%10
             carry = (n1+n2+carry)//10
             tail.next = ListNode(cur)
             tail = tail.next
-        
+
         return dummy.next
 
 
-            

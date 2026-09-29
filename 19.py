@@ -19,12 +19,12 @@ class Solution1:
         while cur:
             cur=cur.next
             total+=1
-        
+
         # get previous node of target
         cur = dummy = ListNode(0,head)
         for _ in range(total-n):
             cur = cur.next
- 
+
         # delete it
         cur.next = cur.next.next
         return dummy.next

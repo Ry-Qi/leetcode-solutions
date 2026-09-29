@@ -3,10 +3,10 @@
 #  You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
 
 # For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
-# Return the ordering of courses you should take to finish all courses. 
+# Return the ordering of courses you should take to finish all courses.
 # If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
 
- 
+
 
 # Example 1:
 
@@ -17,15 +17,15 @@
 
 # Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
 # Output: [0,2,1,3]
-# Explanation: There are a total of 4 courses to take. 
-# To take course 3 you should have finished both courses 1 and 2. 
+# Explanation: There are a total of 4 courses to take.
+# To take course 3 you should have finished both courses 1 and 2.
 # Both courses 1 and 2 should be taken after you finished course 0.
 # So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
 # Example 3:
 
 # Input: numCourses = 1, prerequisites = []
 # Output: [0]
- 
+
 
 # Constraints:
 
@@ -50,7 +50,7 @@ class Solution1:
 
             if c in learned:
                 return True
-            
+
             if c in visited:
                 return False
 
@@ -74,17 +74,17 @@ class Solution1:
                 return True
 
             return False
-        
+
         for c in range(numCourses):
             if not learn(c):
                 return []
-        
+
         return ordering
 
 
 class Solution2:
     def findOrder(self, numCourses: int, prerequisites: list[list[int]]) -> list[int]:
-        
+
         preCourses = defaultdict(set)
         postCourses = defaultdict(set)
 
@@ -96,7 +96,7 @@ class Solution2:
         for i in range(numCourses):
             if len(preCourses[i])==0:
                 q.append(i)
-        
+
         while q:
             can_learn = q[0]
             q.popleft()
@@ -107,21 +107,15 @@ class Solution2:
                     preCourses[p].discard(can_learn)
                     if len(preCourses[p])==0:
                         q.append(p)
-        
+
         if len(res) != numCourses:
             return []
-        
-        return res
-            
-            
 
-        
-        
-            
+        return res
+
 
 nums = set([2, 1, -1, 0,3, 9])
 
 for c in nums:
     print(c)
 
-            

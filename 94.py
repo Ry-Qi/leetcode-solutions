@@ -19,12 +19,12 @@ class Solution:
             top = st.pop()
             res.append(top.val)
             cur = top.right
-        
+
         return res
     def inorderTraversal2(self, root: TreeNode | None) -> list[int]:
         if not root:
             return []
-        
+
         left = self.inorderTraversal1(root.left)
         right = self.inorderTraversal1(root.right)
 
@@ -32,9 +32,9 @@ class Solution:
         res.extend(left)
         res.append(root.val)
         res.extend(right)
-        
+
         return res
-    
+
 root1 = TreeNode(1)
 root2 = TreeNode(2)
 root3 = TreeNode(3)
@@ -50,12 +50,10 @@ root3.left = root6
 
 #          1
 #      2        3
-#   4     5   6  
+#   4     5   6
 
 
 print(Solution().inorderTraversal1(root1))
 print(Solution().inorderTraversal2(root1))
 
 
-
-            
