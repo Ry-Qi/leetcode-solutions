@@ -37,27 +37,35 @@
 
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        res, st = [], []
-
+        st = []
+        invalid_index = set()
         for i, c in enumerate(s):
-            if c=='(':
-                res.append(c)
-                st.append(i)
+            if c == '(':st.append(i)
             elif c==')':
-                if st:
-                    st.pop()
-                else:
-                    continue
-            else:
-                res.append(c)
-
-        tmp = list(s)
+                if st: st.pop()
+                else: invalid_index.add(i)
+        while st:
+            invalid_index.add(st.pop())
         res = ""
-        for i, c in enumerate(tmp):
-            if i != st[-1]:
+        for i, c in enumerate(s):
+            if i not in invalid_index:
                 res += c
-            else:
-                st.pop()
-
         return res
 
+    def minRemoveToMakeValidWithOptimized(self, s: str) -> str:
+        st = []
+        sl = list(s)
+        for i, c in enumerate(s):
+            if c == '(':st.append(i)
+            elif c==')':
+                if st: st.pop()
+                else: sl[i]=''
+
+        while st:
+            sl[st.pop()] = ''
+
+        return ''.join(sl)
+
+s = input()
+
+print(Solution().minRemoveToMakeValid(s))
