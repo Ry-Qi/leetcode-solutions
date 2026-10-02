@@ -22,4 +22,16 @@
 
 class Solution:
     def search(self, nums: list, target: int) -> int:
-        
+        l, r = 0, len(nums)-1
+
+        while l <= r:
+            n, mi = nums[(l+r)//2], (l+r)//2
+
+            if target > n:
+                l = mi + 1
+            elif target < n:
+                r = mi - 1
+            else:
+                return mi
+
+        return -1
