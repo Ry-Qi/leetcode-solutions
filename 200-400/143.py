@@ -52,4 +52,5 @@ class Solution:
                 tail.next = l2
                 tail = tail.next
                 l2 = l2.next
-        head = res
+        # No need
+        # head = res
