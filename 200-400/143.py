@@ -32,7 +32,7 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         if not prev:
-            return head
+            return
         prev.next = None
         l1, l2 = head, slow
         prev, cur, nxt = None, l2, None
@@ -43,14 +43,15 @@ class Solution:
             cur = nxt
         l2 = prev
         res = tail = ListNode(-1)
-        while l1 or l2:
-            if l1:
-                tail.next = l1
-                tail = tail.next
-                l1 = l1.next
-            if l2:
-                tail.next = l2
-                tail = tail.next
-                l2 = l2.next
+        while l1:
+            tail.next = l1
+            l1 = l1.next
+            tail = tail.next
+            tail.next = l2
+            l2 = l2.next
+            tail = tail.next
+        if l2:
+            tail.next = l2
+            
         # No need
         # head = res
